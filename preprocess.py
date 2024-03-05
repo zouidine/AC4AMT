@@ -53,7 +53,7 @@ class Preprocessing():
         tensor_data = torch.zeros(batch, max_len, dtype=torch.long)
         tensor_mask = []
         for i in range(batch):
-            ids = [self.word2index.get(w, self.word2index["<UNK>"]) for w in l_sen_tkn[i]]
+            ids = l_sen_tkn[i]
             tensor_data[i, 0:len(ids)] = torch.tensor(ids, dtype=torch.long)
             tensor_mask.append(len(ids))
         return tensor_data, torch.tensor(tensor_mask)
